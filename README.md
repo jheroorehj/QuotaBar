@@ -10,6 +10,7 @@ Claude · Codex · Gemini · Grok 의 남은 사용량을<br>메뉴바 클릭 �
 
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-000000?style=flat-square&logo=apple&logoColor=white)
 ![Swift 6](https://img.shields.io/badge/Swift-6-F05138?style=flat-square&logo=swift&logoColor=white)
+[![MIT 라이선스](https://img.shields.io/badge/license-MIT-6E5AFF?style=flat-square)](LICENSE)
 ![서비스 4개](https://img.shields.io/badge/%EC%84%9C%EB%B9%84%EC%8A%A4-Claude_%C2%B7_Codex_%C2%B7_Gemini_%C2%B7_Grok-30D158?style=flat-square)
 ![사용 기록 수집 없음](https://img.shields.io/badge/%EC%82%AC%EC%9A%A9_%EA%B8%B0%EB%A1%9D_%EC%88%98%EC%A7%91-%EC%97%86%EC%9D%8C-0A84FF?style=flat-square)
 
@@ -286,3 +287,7 @@ swift run quotabar-cli init            # 설정 파일 새로 만들기
 ## 참고
 
 사용량을 받아 오는 방법은 오픈소스 [CodexBar](https://github.com/steipete/CodexBar)(MIT)를 참고했습니다.
+
+## 라이선스
+
+[MIT](LICENSE) — 누구나 자유롭게 쓰고, 고치고, 다시 나눌 수 있습니다. 저작권 표시와 라이선스 글만 함께 두면 됩니다.
