@@ -279,7 +279,7 @@ swift run quotabar-cli init            # 설정 파일 새로 만들기
 
 | 문서 | 내용 |
 | --- | --- |
-| [DESIGN.md](DESIGN.md) | 화면 디자인 규칙 |
+| [DESIGN.md](https://github.com/jheroorehj/design-systems/blob/main/swiftui-liquid-glass/DESIGN.md) | 화면 디자인 규칙 (별도 저장소 `design-systems`) |
 
 </details>
 
