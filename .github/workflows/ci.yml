@@ -1,0 +1,47 @@
+# 이 파일은 작업 저장소에서 자동으로 옮겨 옵니다. 여기서 고치면 다음 동기화 때 덮어씁니다.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  core-linux:
+    name: Core 테스트 (Linux)
+    runs-on: ubuntu-24.04
+    container: swift:6.2-noble
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift build --build-tests
+      - run: swift test
+
+  macos-app:
+    name: macOS 앱 빌드 · 테스트
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: 도구 버전
+        run: |
+          xcodebuild -version
+          swift --version
+      - name: 빌드 (앱 + CLI + 테스트)
+        run: swift build --build-tests
+      - name: 테스트
+        run: swift test
+      - name: 앱 번들 만들기
+        run: |
+          ./scripts/build-app.sh
+          ditto -c -k --keepParent build/QuotaBar.app build/QuotaBar.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: QuotaBar-app
+          path: build/QuotaBar.zip
+          retention-days: 14
