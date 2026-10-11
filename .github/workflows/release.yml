@@ -1,0 +1,92 @@
+# 이 파일은 작업 저장소에서 자동으로 옮겨 옵니다. 여기서 고치면 다음 동기화 때 덮어씁니다.
+name: Release
+
+# Info.plist 의 버전이 올라가면 그 버전의 DMG 를 빌드해 릴리스에 올린다.
+# 이미 같은 버전의 릴리스가 있으면 아무것도 하지 않는다. 수동 실행은 같은 버전의 파일을 다시 빌드해 바꿔 올린다.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Resources/Info.plist"
+      - ".github/workflows/release.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: 버전 확인
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      exists: ${{ steps.version.outputs.exists }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: version
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="$(python3 -c "import plistlib; print(plistlib.load(open('Resources/Info.plist', 'rb'))['CFBundleShortVersionString'])")"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if gh release view "v$version" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "v$version 릴리스가 이미 있습니다."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "v$version 릴리스를 새로 만듭니다."
+          fi
+
+  dmg:
+    name: DMG 빌드 · 릴리스
+    needs: check
+    if: needs.check.outputs.exists == 'false' || github.event_name == 'workflow_dispatch'
+    runs-on: macos-26
+    timeout-minutes: 30
+    env:
+      VERSION: ${{ needs.check.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: 도구 버전
+        run: |
+          xcodebuild -version
+          swift --version
+      - name: 테스트
+        run: swift test
+      - name: DMG 만들기 (Apple Silicon + Intel)
+        run: |
+          UNIVERSAL=1 ./scripts/build-dmg.sh
+          # 파일 이름에 버전을 넣지 않아야 releases/latest/download/QuotaBar.dmg 주소가 늘 최신을 가리킨다.
+          cp "build/QuotaBar-$VERSION.dmg" build/QuotaBar.dmg
+          lipo -archs build/QuotaBar.app/Contents/MacOS/QuotaBar
+          codesign --verify --deep --strict build/QuotaBar.app
+          shasum -a 256 build/QuotaBar.dmg | tee build/QuotaBar.dmg.sha256
+      - name: 릴리스에 올리기
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            gh release upload "v$VERSION" build/QuotaBar.dmg build/QuotaBar.dmg.sha256 --clobber
+            exit 0
+          fi
+          cat > notes.md <<NOTES
+          ## 설치
+
+          1. 아래의 **QuotaBar.dmg** 를 내려받아 엽니다.
+          2. QuotaBar 를 **Applications** 폴더로 끌어다 놓고 엽니다.
+
+          Apple Silicon 과 Intel Mac 모두에서 실행됩니다 (macOS 14 이상).
+
+          처음 열 때 "확인되지 않은 개발자" 또는 "손상되었습니다" 라는 창이 뜨면 **시스템 설정 → 개인정보 보호 및 보안 → 그래도 열기** 를 누르거나, 터미널에서 아래를 실행한 뒤 다시 엽니다.
+
+          \`\`\`bash
+          xattr -dr com.apple.quarantine /Applications/QuotaBar.app
+          \`\`\`
+          NOTES
+          gh release create "v$VERSION" build/QuotaBar.dmg build/QuotaBar.dmg.sha256 \
+            --target "$GITHUB_SHA" --title "QuotaBar $VERSION" --notes-file notes.md --generate-notes

@@ -24,7 +24,10 @@ ditto "$APP" "$STAGE/QuotaBar.app"
 ln -s /Applications "$STAGE/Applications"
 # 만든 사람의 정보가 배포판에 섞이지 않았는지 확인한다 (계정 이름, 홈 폴더 경로, git 사용자 정보).
 leaks=""
-for needle in "$(id -un)" "$HOME" "$(git config user.name 2>/dev/null || true)" "$(git config user.email 2>/dev/null || true)"; do
+needles=("$(git config user.name 2>/dev/null || true)" "$(git config user.email 2>/dev/null || true)")
+# GitHub 러너의 계정 이름(runner)은 만든 사람의 정보가 아니고, 코드 안의 이름(ProcessRunner 등)과 겹쳐 항상 걸린다.
+[ "${GITHUB_ACTIONS:-}" = "true" ] || needles+=("$(id -un)" "$HOME")
+for needle in "${needles[@]}"; do
   [ -n "$needle" ] || continue
   if find "$STAGE/QuotaBar.app" -type f -exec sh -c 'strings -a "$1" | grep -qiF -- "$2"' _ {} "$needle" \; -print | grep -q .; then
     leaks="$leaks $needle"
