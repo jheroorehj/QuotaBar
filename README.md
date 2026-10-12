@@ -4,11 +4,10 @@
 
 # QuotaBar
 
-### 한도에 걸리기 전에, 미리 보세요.
-
-Claude · Codex · Gemini · Grok 의 남은 사용량을<br>메뉴바 클릭 한 번으로 확인하는 macOS 앱
-
 <a href="https://github.com/jheroorehj/QuotaBar/releases/latest/download/QuotaBar.dmg"><img src="docs/images/download-button.svg" alt="QuotaBar 내려받기 — 누르면 바로 설치" width="332"></a>
+
+Claude · Codex · Gemini · Grok 의 남은 사용량 확인용
+
 
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-000000?style=flat-square&logo=apple&logoColor=white)
 ![Swift 6](https://img.shields.io/badge/Swift-6-F05138?style=flat-square&logo=swift&logoColor=white)
