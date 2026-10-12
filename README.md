@@ -8,6 +8,8 @@
 
 Claude · Codex · Gemini · Grok 의 남은 사용량을<br>메뉴바 클릭 한 번으로 확인하는 macOS 앱
 
+<a href="https://github.com/jheroorehj/QuotaBar/releases/latest/download/QuotaBar.dmg"><img src="docs/images/download-button.svg" alt="QuotaBar 내려받기 — 누르면 바로 설치" width="332"></a>
+
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-000000?style=flat-square&logo=apple&logoColor=white)
 ![Swift 6](https://img.shields.io/badge/Swift-6-F05138?style=flat-square&logo=swift&logoColor=white)
 [![MIT 라이선스](https://img.shields.io/badge/license-MIT-6E5AFF?style=flat-square)](LICENSE)
@@ -16,10 +18,6 @@ Claude · Codex · Gemini · Grok 의 남은 사용량을<br>메뉴바 클릭 �
 ![사용 기록 수집 없음](https://img.shields.io/badge/%EC%82%AC%EC%9A%A9_%EA%B8%B0%EB%A1%9D_%EC%88%98%EC%A7%91-%EC%97%86%EC%9D%8C-0A84FF?style=flat-square)
 
 [**설치**](#설치) · [**사용법**](#사용법) · [**설정**](#설정) · [**자주 묻는 질문**](#자주-묻는-질문) · [**개인정보**](#개인정보)
-
-<br>
-
-<a href="https://github.com/jheroorehj/QuotaBar/releases/latest/download/QuotaBar.dmg"><img src="docs/images/download-button.svg" alt="QuotaBar 내려받기 — 누르면 바로 설치" width="332"></a>
 
 <br>
 
