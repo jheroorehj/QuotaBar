@@ -11,9 +11,12 @@ Claude · Codex · Gemini · Grok 의 남은 사용량을<br>메뉴바 클릭 �
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-000000?style=flat-square&logo=apple&logoColor=white)
 ![Swift 6](https://img.shields.io/badge/Swift-6-F05138?style=flat-square&logo=swift&logoColor=white)
 [![MIT 라이선스](https://img.shields.io/badge/license-MIT-6E5AFF?style=flat-square)](LICENSE)
-[![내려받기](https://img.shields.io/github/v/release/jheroorehj/QuotaBar?style=flat-square&label=%EB%82%B4%EB%A0%A4%EB%B0%9B%EA%B8%B0&color=30D158)](https://github.com/jheroorehj/QuotaBar/releases/latest/download/QuotaBar.dmg)
 ![서비스 4개](https://img.shields.io/badge/%EC%84%9C%EB%B9%84%EC%8A%A4-Claude_%C2%B7_Codex_%C2%B7_Gemini_%C2%B7_Grok-30D158?style=flat-square)
 ![사용 기록 수집 없음](https://img.shields.io/badge/%EC%82%AC%EC%9A%A9_%EA%B8%B0%EB%A1%9D_%EC%88%98%EC%A7%91-%EC%97%86%EC%9D%8C-0A84FF?style=flat-square)
+
+<a href="https://github.com/jheroorehj/QuotaBar/releases/latest/download/QuotaBar.dmg"><img src="docs/images/download-button.svg" alt="QuotaBar 내려받기 — 누르면 바로 설치" width="420"></a>
+
+**이 버튼 하나로 바로 설치할 수 있습니다.**<br>누르면 최신 버전의 `QuotaBar.dmg` 가 내려받아집니다. 열어서 QuotaBar 를 Applications 폴더로 끌어다 놓으면 끝입니다.
 
 [**설치**](#설치) · [**사용법**](#사용법) · [**설정**](#설정) · [**자주 묻는 질문**](#자주-묻는-질문) · [**개인정보**](#개인정보)
 
@@ -41,7 +44,13 @@ AI 구독에는 5시간·일주일 단위의 사용 한도가 있는데, 얼마�
 
 **필요한 것** — macOS 14 (Sonoma) 이상인 Mac, 그리고 네 서비스 중 하나 이상의 유료 구독
 
-1. [**QuotaBar.dmg 내려받기**](https://github.com/jheroorehj/QuotaBar/releases/latest/download/QuotaBar.dmg) — 항상 최신 버전입니다.
+<p align="center">
+<a href="https://github.com/jheroorehj/QuotaBar/releases/latest/download/QuotaBar.dmg"><img src="docs/images/download-button.svg" alt="QuotaBar 내려받기 — 누르면 바로 설치" width="420"></a>
+<br>
+<sub>누르면 바로 내려받아집니다. 항상 최신 버전입니다.</sub>
+</p>
+
+1. 위의 **QuotaBar 내려받기** 버튼을 누릅니다.
 2. 받은 `QuotaBar.dmg` 를 열고 QuotaBar 를 **Applications** 폴더로 끌어다 놓습니다.
 3. 응용 프로그램 폴더에서 QuotaBar 를 엽니다.
 4. 화면 맨 위 오른쪽에 생긴 아이콘을 누릅니다.
