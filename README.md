@@ -21,8 +21,6 @@ Claude · Codex · Gemini · Grok 의 남은 사용량을<br>메뉴바 클릭 �
 
 <a href="https://github.com/jheroorehj/QuotaBar/releases/latest/download/QuotaBar.dmg"><img src="docs/images/download-button.svg" alt="QuotaBar 내려받기 — 누르면 바로 설치" width="332"></a>
 
-<sub>이 버튼 하나로 바로 설치할 수 있습니다. 내려받은 파일을 열어 Applications 폴더로 끌어다 놓으면 끝입니다.</sub>
-
 <br>
 
 <p>
