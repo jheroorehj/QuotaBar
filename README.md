@@ -6,7 +6,7 @@
 
 <a href="https://github.com/jheroorehj/QuotaBar/releases/latest/download/QuotaBar.dmg"><img src="docs/images/download-button.svg" alt="QuotaBar 내려받기 — 누르면 바로 설치" width="332"></a>
 
-Claude · Codex · Gemini · Grok 의 남은 사용량 확인용
+Claude · Codex · Gemini · Grok 의 남은 사용량 확인
 
 
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-000000?style=flat-square&logo=apple&logoColor=white)
